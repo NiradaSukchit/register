@@ -96,6 +96,11 @@ public register() {
         btnCancel.setFont(new java.awt.Font("TH SarabunPSK", 1, 20)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(153, 0, 102));
         btnCancel.setText("ยกเลิก");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
 
         btnOK.setBackground(new java.awt.Color(255, 153, 255));
@@ -166,7 +171,7 @@ public register() {
        
         try {
             
-            Document myDoc = user.find(eq("ID", txtUsername.getText())).first();
+            Document myDoc = user.find(eq("Username", txtUsername.getText())).first();
             System.out.println(myDoc.toJson());
             booleancheckID = true;
             
@@ -205,7 +210,7 @@ public register() {
             }else if(!checkEmpty()){
                 if(!confirmPass()){
                     JLabel label = new JLabel("Password ไม่ตรงกัน");
-                    label.setFont(new Font("TH SarabunPSK ", Font.BOLD, 18));
+                    label.setFont(new Font("TH SarabunPSK", Font.BOLD, 18));
                     JOptionPane.showMessageDialog(null,label,"ERROR",JOptionPane.WARNING_MESSAGE);
                     reset();
                 }
@@ -217,6 +222,10 @@ public register() {
             }
         }
     }//GEN-LAST:event_btnOKActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        reset();// TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelActionPerformed
 
  public void submit(){
         
